@@ -1,0 +1,47 @@
+PODS:
+  - ATBarSDK (1.4.1)
+  - Flutter (1.0.0)
+  - image_picker (0.0.1):
+    - Flutter
+  - permission_handler (3.3.0):
+    - Flutter
+  - r_scan (0.0.1):
+    - ATBarSDK (~> 1.4.1)
+    - Flutter
+    - ZXingObjC (~> 3.6.5)
+  - ZXingObjC (3.6.5):
+    - ZXingObjC/All (= 3.6.5)
+  - ZXingObjC/All (3.6.5)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+  - r_scan (from `.symlinks/plugins/r_scan/ios`)
+
+SPEC REPOS:
+  trunk:
+    - ATBarSDK
+    - ZXingObjC
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  image_picker:
+    :path: ".symlinks/plugins/image_picker/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
+  r_scan:
+    :path: ".symlinks/plugins/r_scan/ios"
+
+SPEC CHECKSUMS:
+  ATBarSDK: b6aa2b6a120ac7d6b1ff041bd60b9edde6bb17c4
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  image_picker: 9c3312491f862b28d21ecd8fdf0ee14e601b3f09
+  permission_handler: 67637977b227d62d46bfbf524f335f8568de5a73
+  r_scan: 5672d9b68f8cece3835895a6aaab12047acf65bd
+  ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.1

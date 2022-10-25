@@ -12,15 +12,15 @@ final MethodChannel _channel = const MethodChannel('$_scanType/method');
 
 Future<List<RScanCameraDescription>> availableRScanCameras() async {
   try {
-    final List<Map<dynamic, dynamic>> cameras = await (_channel
+    final List<Map<dynamic, dynamic>>? cameras = await (_channel
             .invokeListMethod<Map<dynamic, dynamic>>('availableCameras')
-        as Future<List<Map<dynamic, dynamic>>>);
-    return cameras.map((Map<dynamic, dynamic> camera) {
+        as Future<List<Map<dynamic, dynamic>>?>);
+    return cameras?.map((Map<dynamic, dynamic> camera) {
       return RScanCameraDescription(
         name: camera['name'],
         lensDirection: _parseCameraLensDirection(camera['lensFacing']),
       );
-    }).toList();
+    }).toList() ?? [];
   } on PlatformException catch (e) {
     throw RScanCameraException(e.code, e.message);
   }
@@ -44,16 +44,16 @@ class RScanCameraController extends ValueNotifier<RScanCameraValue> {
     _creatingCompleter = Completer<void>();
 
     try {
-      final Map<dynamic, dynamic?> reply =
+      final Map<dynamic, dynamic>? reply =
           await (_channel.invokeMapMethod('initialize', <String, dynamic>{
         'cameraName': description.name,
         'resolutionPreset': _serializeResolutionPreset(resolutionPreset),
-      }) as FutureOr<Map<dynamic, dynamic?>>);
-      _textureId = reply['textureId'];
+      }) as Future<Map<dynamic, dynamic>?>);
+      _textureId = reply?['textureId'];
       value = value.copyWith(
           isInitialized: true,
-          previewSize: Size(reply['previewWidth'].toDouble(),
-              reply['previewHeight'].toDouble()));
+          previewSize: Size(reply?['previewWidth'].toDouble(),
+              reply?['previewHeight'].toDouble()));
       _resultSubscription = EventChannel('${_scanType}_$_textureId/event')
           .receiveBroadcastStream()
           .listen(_handleResult);
